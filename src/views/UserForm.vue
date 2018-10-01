@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <form @:submit.prevent="saveChanges">
+    <form @submit.prevent="saveChanges">
       <div class="columns">
 
         <div class="column">
@@ -46,20 +46,30 @@
 <script>
 import axios from 'axios'
 export default {
-  name: 'User',
-  props: {
-    id: {
-      type: String || Number,
-      required: true
-    }
-  },
+  name: 'UserForm',
   data: () => {
     return {
+      model: {
+        id: '',
+        isActive: '',
+        balance: '',
+        picture: '',
+        age: '',
+        accessLevel: '',
+        firstName: '',
+        lastName: '',
+        company: '',
+        email: '',
+        phone: '',
+        address: '',
+        about: '',
+        registered: ''
+      },
       user: {}
     }
   },
   mounted() {
-    axios.get(`http://localhost:3000/users/${this.id}`).then(res => {
+    axios.get(`http://localhost:3000/users/${this.$route.params.id}`).then(res => {
       this.user = res.data
     })
   },
@@ -70,6 +80,7 @@ export default {
   }
 }
 </script>
+
 
 <style scoped>
 .container {

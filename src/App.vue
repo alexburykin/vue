@@ -10,10 +10,10 @@
 
       <div class="navbar-menu">
         <a class="navbar-item">
-          <router-link to="/">Home</router-link>
+          <router-link active-class="active" to="/" exact >Home</router-link>
         </a>
         <a class="navbar-item">
-          <router-link to="/users">Users</router-link>
+          <router-link active-class="active" to="/users">Users</router-link>
         </a>
       </div>
 
@@ -44,6 +44,11 @@ export default {
       color: #2c3e50
       &.router-link-exact-active
         color: #42b983
+
+.navbar-item
+  .active
+    color: green
+    text-decoration: underline
 
 .hidden,
 [v-cloak]
